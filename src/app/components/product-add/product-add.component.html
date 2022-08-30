@@ -1,0 +1,59 @@
+<div class="container" *ngIf="message">
+    <div class="row">
+        <div class="col-10 offset-1">
+            <p>
+                <ngb-alert type="info" (closed)="message" style="margin-top: 20px;">
+                    <span>{{message}}</span>
+                </ngb-alert>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt-5">
+    <form *ngIf="productFormGroup" [formGroup]="productFormGroup">
+        <div class="col-8 offset-2">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="fw-bold"> name</label>
+                                <input type="text" class="form-control" formControlName="name" [ngClass]="{'is-invalid':submitted && productFormGroup.controls['name'].errors}">
+                            </div>
+                            <div *ngIf="submitted && productFormGroup.controls['name'].errors" class="text-danger">
+                                <div *ngIf="productFormGroup.controls['name'].errors?.['required']">name is required</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="fw-bold"> price</label>
+                                <input type="number" class="form-control" formControlName="price" [ngClass]="{'is-invalid':submitted && productFormGroup.controls['price'].errors}">
+                            </div>
+                            <div *ngIf="submitted && productFormGroup.controls['price'].errors" class="text-danger">
+                                <div *ngIf="productFormGroup.controls['price'].errors?.['required']">price is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label class="fw-bold"> status</label>
+                                <div class="d-flex">
+                                    available <input [value]="1" type="radio" formControlName="status" style="margin-right: 100px;"> unavailable <input [value]="0" type="radio" formControlName="status">
+                                </div>
+                                <div *ngIf="submitted && productFormGroup.controls['status'].errors" class="text-danger">
+                                    <div *ngIf="productFormGroup.controls['status'].errors?.['required']">status is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-right mt-4">
+                            <button class="btn btn-sm btn-primary" (click)="AddProduct()">
+                              save<i class="fa fa-save"></i>
+                           </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
