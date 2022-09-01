@@ -19,6 +19,7 @@ import { ProductsNavBarComponent } from './components/products/products-nav-bar/
 import { ProductsListComponent } from './components/products/products-list/products-list.component';
 import { ProductFalshMessagesComponent } from './components/products/product-falsh-messages/product-falsh-messages.component';
 import { ProductsItemComponent } from './components/products/products-list/products-item/products-item.component';
+import { StatsComponent } from './components/stats/stats.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ProductsItemComponent } from './components/products/products-list/produ
     ProductsNavBarComponent,
     ProductsListComponent,
     ProductFalshMessagesComponent,
-    ProductsItemComponent
+    ProductsItemComponent,
+    StatsComponent
 
 
   ],
