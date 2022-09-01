@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/model/product.model';
 import { ProductsService } from 'src/app/services/products.service';
+import { EventDriverService } from 'src/app/state/event.driver.servic';
 import { ActionEvent, ProductActionsTypes } from 'src/app/state/product.state';
 
 @Component({
@@ -12,7 +13,10 @@ import { ActionEvent, ProductActionsTypes } from 'src/app/state/product.state';
 export class ProductsComponent implements OnInit {
 
   //constructor who use Service product
-  constructor(private productsservice:ProductsService,private router:Router) {
+  constructor(
+    private productsservice:ProductsService,
+    private router:Router,
+    private eventDrivenService:EventDriverService,) {
 
   }
 
@@ -26,6 +30,9 @@ export class ProductsComponent implements OnInit {
   success:any;
   //function main
   ngOnInit(): void {
+    this.eventDrivenService.sourceEventSubjectObservable.subscribe((eventAction:ActionEvent)=>{
+      this.onActionEvent(eventAction);
+    });
   }
 
   //show all products
@@ -92,16 +99,6 @@ export class ProductsComponent implements OnInit {
       });
     }
   }
-
-  // //update product
-  // onUpdateProduct(product:Product){
-  //   this.productsservice.onUpdate(product).subscribe(data=>{
-  //     this.product=data;
-  //     this.message=data.message;
-  //   },err=>{
-  //     console.log(err);
-  //   });
-  // }
 
   //page of edit product
   onEdit(product:Product){

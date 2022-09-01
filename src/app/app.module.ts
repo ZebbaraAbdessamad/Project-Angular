@@ -13,7 +13,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductAddComponent } from './components/product-add/product-add.component';
-import { AlertMessagesComponent } from './components/alert-messages/alert-messages.component';
 import { ProductEditComponent } from './components/product-edit/product-edit.component';
 import { ProductsNavBarComponent } from './components/products/products-nav-bar/products-nav-bar.component';
 import { ProductsListComponent } from './components/products/products-list/products-list.component';
@@ -29,7 +28,6 @@ import { StatsComponent } from './components/stats/stats.component';
     ProductsComponent,
     FooterComponent,
     ProductAddComponent,
-    AlertMessagesComponent,
     ProductEditComponent,
     ProductsNavBarComponent,
     ProductsListComponent,

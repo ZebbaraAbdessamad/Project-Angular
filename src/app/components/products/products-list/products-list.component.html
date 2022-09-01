@@ -15,7 +15,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <app-products-item style="display:contents" (ProductEventEmitter)="onAction($event)" [element]="element" [i]="i" *ngFor="let element of products | slice: (page-1) * pageSize : page * pageSize let i = index;"></app-products-item>
+                        <app-products-item style="display:contents" [element]="element" [i]="i" *ngFor="let element of products | slice: (page-1) * pageSize : page * pageSize let i = index;"></app-products-item>
                     </tbody>
                 </table>
                 <ngb-pagination [(page)]="page" [pageSize]="pageSize " [collectionSize]="products.length "></ngb-pagination>
