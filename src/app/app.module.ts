@@ -15,6 +15,10 @@ import { NgbModule, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductAddComponent } from './components/product-add/product-add.component';
 import { AlertMessagesComponent } from './components/alert-messages/alert-messages.component';
 import { ProductEditComponent } from './components/product-edit/product-edit.component';
+import { ProductsNavBarComponent } from './components/products/products-nav-bar/products-nav-bar.component';
+import { ProductsListComponent } from './components/products/products-list/products-list.component';
+import { ProductFalshMessagesComponent } from './components/products/product-falsh-messages/product-falsh-messages.component';
+import { ProductsItemComponent } from './components/products/products-list/products-item/products-item.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { ProductEditComponent } from './components/product-edit/product-edit.com
     FooterComponent,
     ProductAddComponent,
     AlertMessagesComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    ProductsNavBarComponent,
+    ProductsListComponent,
+    ProductFalshMessagesComponent,
+    ProductsItemComponent
 
 
   ],

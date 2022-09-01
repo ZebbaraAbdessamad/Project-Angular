@@ -1,14 +1,4 @@
-<div class="container" *ngIf="message">
-    <div class="row">
-        <div class="col-10 offset-1">
-            <p>
-                <ngb-alert type="info" (closed)="message" style="margin-top: 20px;">
-                    <span>{{message}}</span>
-                </ngb-alert>
-            </p>
-        </div>
-    </div>
-</div>
+<app-product-falsh-messages [message]="message"></app-product-falsh-messages>
 <div class="container-fluid mt-5">
     <form *ngIf="productFormGroup" [formGroup]="productFormGroup">
         <div class="col-8 offset-2">

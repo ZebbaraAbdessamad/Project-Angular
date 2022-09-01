@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/model/product.model';
 import { ProductsService } from 'src/app/services/products.service';
+import { ActionEvent, ProductActionsTypes } from 'src/app/state/product.state';
 
 @Component({
   selector: 'app-products',
@@ -16,7 +17,7 @@ export class ProductsComponent implements OnInit {
   }
 
   //decelartion of variables
-  message:any;
+  message?:string;
   products:Product[]| null=null;
   product:any;
   page:any = 1;
@@ -84,29 +85,40 @@ export class ProductsComponent implements OnInit {
     if(v==true){
       this.productsservice.Ondelete(P).subscribe(data=>{
         this.product=data;
-        this.message=data.message;
-        console.log(this.product);
         this.showProducts();
+        this.message=data.message;
       },err=>{
         console.log(err);
       });
     }
   }
 
-  //update product
-  onUpdateProduct(product:Product){
-    this.productsservice.onUpdate(product).subscribe(data=>{
-      this.product=data;
-      this.message=data.message;
-      console.log(this.product);
-      this.showProducts();
-    },err=>{
-      console.log(err);
-    });
-  }
+  // //update product
+  // onUpdateProduct(product:Product){
+  //   this.productsservice.onUpdate(product).subscribe(data=>{
+  //     this.product=data;
+  //     this.message=data.message;
+  //   },err=>{
+  //     console.log(err);
+  //   });
+  // }
 
   //page of edit product
   onEdit(product:Product){
     this.router.navigateByUrl('/edit-product/'+product.id)
+  }
+
+  //Actoin event
+  onActionEvent($event:ActionEvent){
+   switch($event.type){
+    case ProductActionsTypes.GET_ALL_PRODUCTS:this.showProducts(); break;
+    case ProductActionsTypes.GET_AVAILABLE_PRODUCTS:this.availableProduct(); break;
+    case ProductActionsTypes.GET_UNAVAILABLE_PRODUCTS:this.unavailableProduct(); break;
+    case ProductActionsTypes.SEARCH_PRODUCTS:this.onSearch($event.payload); break;
+    case ProductActionsTypes.CHANGE_STATUS_PRODUCT:this.onSelect($event.payload); break;
+    case ProductActionsTypes.Edit_PRODUCT:this.onEdit($event.payload); break;
+    case ProductActionsTypes.DELETE_PRODUCT:this.ondeleteProduct($event.payload); break;
+
+   }
   }
 }

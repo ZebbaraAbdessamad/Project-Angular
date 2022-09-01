@@ -1,0 +1,20 @@
+<tr *ngIf="element">
+    <td> {{i+1}}</td>
+    <td>{{element.name}}</td>
+    <td> {{element.price}}</td>
+    <td> {{element.created_at | date:'MM/dd/yyyy'}}</td>
+    <td>
+        <button (click)="onSelect(element)" [ngClass]="element.status ?'btn btn-sm  btn-success':'btn btn-sm btn-secondary' " class="">
+       <span  *ngIf="element.status"> available</span>
+       <span *ngIf="!element.status ">unavailable </span>
+    </button>
+    </td>
+    <td [width]="100">
+        <a (click)="onEdit(element)" class="btn btn-sm btn-primary ">
+            <i class="fa fa-edit "></i>
+        </a>
+        <a (click)="ondeleteProduct(element)" class="btn btn-sm btn-danger " style="margin-left: 10px;">
+            <i class="fa fa-trash-o "></i>
+        </a>
+    </td>
+</tr>

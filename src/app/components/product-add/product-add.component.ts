@@ -11,7 +11,7 @@ import { ProductsService } from 'src/app/services/products.service';
 export class ProductAddComponent implements OnInit {
 
   productFormGroup!:FormGroup;
-  message:any;
+  message?:string;
   name:any;
   submitted:boolean=false;
 
@@ -27,7 +27,7 @@ export class ProductAddComponent implements OnInit {
 
   AddProduct(){
     this.submitted=true;
-    if(this.productFormGroup.invalid)return;
+    if(this.productFormGroup.invalid) return;
     this.productService.OnsaveProduct(this.productFormGroup.value).subscribe(data=>{
       this.message=data.message;
       console.log(this.message);

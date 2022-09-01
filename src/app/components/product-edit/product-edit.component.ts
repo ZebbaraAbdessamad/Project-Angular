@@ -12,7 +12,7 @@ import { ProductsService } from 'src/app/services/products.service';
 export class ProductEditComponent implements OnInit {
 
   EditproductFormGroup!:FormGroup;
-  message:any;
+  message?:string;
   productId:any;
   product?:Product;
   submitted:boolean=false;
@@ -31,7 +31,8 @@ export class ProductEditComponent implements OnInit {
       })
     })
   }
-//method update
+
+  //method update
   onUpdateProduct(){
     this.submitted=true;
     if(this.EditproductFormGroup.invalid) return;

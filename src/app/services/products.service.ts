@@ -7,6 +7,7 @@ import { Product } from '../model/product.model';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProductsService {
 
   url=environment.host;
@@ -65,7 +66,6 @@ export class ProductsService {
 
   //update product
   onUpdate(product:Product):Observable<Product>{
-    console.log('id:=>'+product.id);
     return this.http.put<Product>(this.url+`/product/update/`+product.id,product,this.httpOptions);
   }
 
